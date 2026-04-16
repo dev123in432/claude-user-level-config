@@ -2,7 +2,11 @@
 *
 .*
 
-# Except the skills folder
+# Except what we explicitly want
 !skills/
 !skills/**
+!hooks/
+!hooks/autopilot-guard.py
+!settings.json
+!statusline-command.sh
 !.gitignore

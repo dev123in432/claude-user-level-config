@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "Bash(python3 -c *)",
+      "Bash(python *)",
+      "Bash(python -c *)",
+      "Bash(powershell.exe -NoProfile *)",
+      "Bash(find *)",
+      "Bash(cd * && git *)",
+      "Bash(git *)",
+      "Bash(ls *)"
+    ],
+    "deny": [
+      "Bash(git push --force *)",
+      "Bash(git push * --force *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean -f *)",
+      "Bash(git branch -D *)",
+      "Bash(rm -rf /*)"
+    ]
+  },
+  "model": "opusplan",
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "microsoft-docs@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true
+  },
+  "effortLevel": "medium",
+  "autoUpdatesChannel": "stable",
+  "minimumVersion": "2.1.81",
+  "voiceEnabled": false,
+  "voice": {
+    "enabled": false,
+    "mode": "hold"
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true
+}
