@@ -1,0 +1,85 @@
+---
+name: devops-update
+description: Update Azure DevOps work items - change state, add comments, assign, or bulk close. Use when closing/resolving work after completing tasks, or adding progress comments to tickets.
+---
+
+Update Azure DevOps work items for the Charter Hall MSM project.
+
+## Azure DevOps Config
+
+- Org: `https://dev.azure.com/acclt-daas`
+- Project: `Charter Hall - MSM Implementation`
+
+## Encoding Note
+
+Always use PowerShell (not bash) to run `az` commands. For queries that return JSON, write to a temp file:
+
+```
+powershell.exe -Command "az boards query --wiql \"...\" --org https://dev.azure.com/acclt-daas --project 'Charter Hall - MSM Implementation' | Out-File -Encoding utf8 C:\Users\dinne\AppData\Local\Temp\wi_result.json"
+```
+
+## State Rules
+
+Work item types have different valid terminal states — always check type before setting state:
+
+| Type | Done State |
+|------|-----------|
+| Task | **Closed** |
+| User Story | **Resolved** |
+| Feature | **Resolved** |
+| Bug | **Resolved** |
+
+`az boards work-item update` does NOT take a `--project` flag — use `--org` only.
+
+## Gather Inputs
+
+Before making any changes, confirm with the user:
+
+1. **Which items?** — Work item IDs (single or list)
+2. **What action?** — Close/Resolve, add comment, assign, or combination
+3. **Comment content?** — What to say, or derive from recent work in the repo
+
+If the user says "mark done" or "close these", look up each item's type first to determine the correct state.
+
+## Fetch Item Type (before updating)
+
+```
+powershell.exe -Command "az boards work-item show --id {ID} --org https://dev.azure.com/acclt-daas"
+```
+
+Check `fields.System.WorkItemType` in the response.
+
+## Update State and Add Comment
+
+```
+powershell.exe -Command "az boards work-item update --id {ID} --state '{state}' --discussion '{comment}' --org https://dev.azure.com/acclt-daas"
+```
+
+## Assign to Someone
+
+```
+powershell.exe -Command "az boards work-item update --id {ID} --assigned-to '{email}' --org https://dev.azure.com/acclt-daas"
+```
+
+## Team Members
+
+| Name | Email |
+|------|-------|
+| James Diekman | james.diekman@acceleratetech.au |
+| David Inness | david.inness@acceleratetech.au |
+| Wilson Li | wilson.li@acceleratetech.au |
+| Tanishk Giriyal | Tanishk.Giriyal@charterhall.com.au |
+
+## Comment Style
+
+Comments should sound human and natural. Avoid:
+- AI-sounding language
+- Em dashes
+- Overly formal or corporate tone
+
+Good: "Done. All 41 sites loaded with capacity and usage data. Cross-checked against Envizi source."
+Bad: "This task has been completed — all 41 Phase 1 sites have been successfully loaded..."
+
+## Bulk Operations
+
+When updating multiple items, run commands in parallel where possible. After each batch, confirm success by checking the returned state field in the response.

@@ -1,0 +1,98 @@
+---
+name: devops-report
+description: Generate a sprint status report in markdown showing completion %, outstanding items, and recommendations. Use for stand-ups, sprint reviews, or when asked "how are we tracking" / "what's left".
+---
+
+Generate a sprint status report for the Charter Hall MSM project.
+
+## Azure DevOps Config
+
+- Org: `https://dev.azure.com/acclt-daas`
+- Project: `Charter Hall - MSM Implementation`
+- Iteration path pattern: `Charter Hall - MSM Implementation\Phase 1\Sprint N`
+
+## Encoding Note
+
+Always use PowerShell (not bash) to run `az` commands — it handles encoding correctly. Pattern:
+
+```
+powershell.exe -Command "az boards ... | Out-File -Encoding utf8 C:\Users\dinne\AppData\Local\Temp\sprint_data.json"
+```
+
+Then read the file with Python using `encoding='utf-8', errors='replace'` and strip any BOM (`lstrip('\ufeff')`), then skip any leading WARNING lines before the JSON starts.
+
+## Step 1: Identify Current Sprint
+
+```
+powershell.exe -Command "az boards iteration team list --team 'Charter Hall - MSM Implementation Team' --org https://dev.azure.com/acclt-daas --project 'Charter Hall - MSM Implementation'"
+```
+
+Find the entry with `"timeFrame": "current"` — that's the sprint name and date range to use.
+
+## Step 2: Query All Sprint Items
+
+Replace `Sprint N` with the current sprint name:
+
+```
+powershell.exe -Command "az boards query --wiql \"SELECT [System.Id], [System.Title], [System.State], [System.WorkItemType], [System.AssignedTo] FROM WorkItems WHERE [System.TeamProject] = 'Charter Hall - MSM Implementation' AND [System.IterationPath] UNDER 'Charter Hall - MSM Implementation\Phase 1\Sprint N' AND [System.State] <> 'Removed' ORDER BY [System.State], [System.Id]\" --org https://dev.azure.com/acclt-daas --project 'Charter Hall - MSM Implementation' | Out-File -Encoding utf8 C:\Users\dinne\AppData\Local\Temp\sprint_report.json"
+```
+
+Parse the JSON with Python to extract: id, title, state, type, assigned_to (displayName).
+
+Done states: `Closed`, `Resolved`, `Done`.
+
+## Step 3: Cross-reference with Repo
+
+Scan the working directory for work that relates to open tickets:
+- Python scripts that implement functionality described in open tickets
+- SQL views that correspond to activity type stories
+- Task folders (`<name>-<id>/`) with completed steps in `task.md`
+- Recent git commits mentioning ticket IDs
+
+## Step 4: Generate Report
+
+Output the report in this format:
+
+```markdown
+# Sprint N Status Report
+
+**Date**: {today}
+**Sprint**: {start_date} to {end_date}
+**Overall**: {done}/{total} ({pct}%)
+
+## Completion by Person
+
+| Person | Done | Total | % |
+|--------|------|-------|---|
+| {name} | {done} | {total} | {pct}% |
+
+## State Breakdown
+
+| State | Count |
+|-------|-------|
+| Closed | N |
+| Active | N |
+| New | N |
+
+## Outstanding Items
+
+### {Person} ({count} open)
+
+| ID | Type | State | Title |
+|----|------|-------|-------|
+| {id} | {type} | {state} | {title} |
+
+## Recommended Closures
+
+Items that appear done based on work in the repo:
+
+| ID | Title | Reason |
+|----|-------|--------|
+| {id} | {title} | {why} |
+
+## Notes
+
+- {observations about sprint health, blockers, risks}
+```
+
+Display the key numbers in chat and offer to save the full report to `tmp/sprint-report-{date}.md`.
