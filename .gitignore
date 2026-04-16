@@ -9,4 +9,5 @@
 !hooks/autopilot-guard.py
 !settings.json
 !statusline-command.sh
+!sync.ps1
 !.gitignore
