@@ -1,6 +1,6 @@
 # sync.ps1 -- commit and push any changes in ~/.claude to GitHub
-# Run via Windows Task Scheduler
-
+# Run via Windows Task Scheduler and output to log file sync.log
+# 16/4/2-26 - Tested and scheduled to run 12pm and 6pm daily.
 $logFile = "$env:USERPROFILE\.claude\sync.log"
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
