@@ -26,6 +26,39 @@ git status --short
 
 Hold onto the output for Step 4.
 
+## Step 2.5: Git activity heat map (project mode only)
+
+Skip in hub mode. In project mode run these directly (not in a subagent):
+
+```bash
+git log --since="7 days ago" --name-only --pretty=format: \
+  | grep -v '^$' \
+  | grep -vE '\.pbi/|/visuals/|/pages/|SemanticModel/definition' \
+  | sort | uniq -c | sort -rn | head -15
+```
+
+```bash
+git log --since="7 days ago" --pretty=format:"%h %ad %s" --date=short | head -15
+```
+
+If the first command returns fewer than 5 rows, fall back to "last 20 commits" instead:
+
+```bash
+git log -20 --name-only --pretty=format: \
+  | grep -v '^$' \
+  | grep -vE '\.pbi/|/visuals/|/pages/|SemanticModel/definition' \
+  | sort | uniq -c | sort -rn | head -15
+```
+
+Hold the heat map output for Step 5. You will display it as the "Recent activity" section, applying adaptive roll-up:
+
+- Group rows by parent folder.
+- If a parent folder has 3 or fewer files in the heat map, show them individually.
+- If a parent folder has more than 3 files, collapse to one line: `path/ - N files (top: a.md, b.md)` showing only the two most-touched filenames.
+- If a folder has subfolders that themselves cross the threshold, roll those up at the deeper level too.
+- Mark files that also appear in `git status --short` as "(also uncommitted)".
+- "Uncommitted only" lists files in `git status` whose path didn't appear in the commit log at all.
+
 ## Step 3: Gather context (via subagent)
 
 Spawn a single Explore subagent to do the reading. This keeps the heavy file content out of the main conversation. The subagent should return a short structured summary -- not raw file contents.
@@ -69,6 +102,7 @@ Prompt for the agent:
 - You are the orientation agent for the /hello skill, running in Project mode.
 - Your job: figure out where we are and what we're working on. Use only Glob, Read, and Grep.
 - Check these local sources (skip any that don't exist):
+  0. docs/status/focus.md -- if it exists, read it and extract the Priorities list (everything under "## Priorities") plus the Updated: line. Compare Updated: to today's date; if more than 14 days old, flag as stale.
   1. CLAUDE.md -- project description and session guidelines
   2. tasks/ folder -- list subfolders, read task.md or tasks.md in each, extract status line. One line per task.
   3. context.md or any */context.md -- "What I was doing" and "What's next"
@@ -78,7 +112,8 @@ Prompt for the agent:
   6. Derive the project name from the repo folder name or CLAUDE.md
   7. Read C:\Users\dinne\repos\dev123in432\claude-assistant\tasks.md -- find any line referencing this project
   8. If a tasks/{project}/ subfolder exists in claude-assistant, read its context.md and tasks.md
-- Return bullet points grouped by: Project Overview (one line), Current Status, Recent Work, What's Next, Blocked/Waiting.
+- Return bullet points grouped by: This Fortnight's Focus (from focus.md if present, else omit), Project Overview (one line), Current Status, What's Next, Blocked/Waiting.
+- For This Fortnight's Focus: list the focus.md Priorities verbatim. Prepend "(stale - last updated YYYY-MM-DD)" if Updated: is over 14 days old. If focus.md does not exist, OMIT this section and instead include a single-line note "no docs/status/focus.md - consider creating one" in your output so the main turn can surface it.
 - One line per bullet, 3-5 bullets per section max. Skip empty sections.
 ```
 
@@ -130,6 +165,12 @@ claude-assistant hub
 ### Project mode template
 
 ```
+## This fortnight's focus
+{Priorities verbatim from docs/status/focus.md, prefixed with stale flag if applicable. Omit section if no focus.md and add a one-line nudge to "Suggested next step" instead.}
+
+## Recent activity (last 7 days)
+{Heat map output from Step 2.5, with adaptive roll-up applied. Group by parent folder; collapse folders with >3 files to "path/ - N files (top: a, b)". Mark files also in git status as "(also uncommitted)". Add an "Uncommitted only:" line for files in git status that didn't appear in the commit log.}
+
 ## Where we are
 {project name and one-line description}
 
@@ -139,8 +180,14 @@ claude-assistant hub
 ## Git
 {branch, last commit, clean/dirty}
 
+## Worth a look
+{Cross-check focus.md against the heat map. Include a bullet only when something has actually drifted:
+ - A focus.md priority has zero matching paths in the 7-day heat map and none in git status (might be stalling or stale).
+ - A path with >2 hits in the heat map (or its parent folder) does not appear anywhere in focus.md (might deserve to).
+ Skip the section entirely if there's no divergence. Max 2-3 lines.}
+
 ## Suggested next step
 {the single most actionable thing based on what you read}
 ```
 
-Keep the whole output under 25 lines. This is a launchpad, not a report. If I want to dig deeper, I'll ask.
+Keep the whole output under 35 lines. This is a launchpad, not a report. If I want to dig deeper, I'll ask.
