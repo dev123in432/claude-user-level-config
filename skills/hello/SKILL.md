@@ -104,7 +104,7 @@ Prompt for the agent:
 - Check these local sources (skip any that don't exist):
   0. docs/status/focus.md -- if it exists, read it and extract the Priorities list (everything under "## Priorities") plus the Updated: line. Compare Updated: to today's date; if more than 14 days old, flag as stale.
   1. CLAUDE.md -- project description and session guidelines
-  2. tasks/ folder -- list subfolders, read task.md or tasks.md in each, extract status line. One line per task.
+  2. tasks/ folder -- list subfolders. **A folder is "done" if it has no `task.md` or `tasks.md` (e.g. they've been renamed to `task.md.done` / `tasks.md.closed`) -- skip those entirely, do not read or report on them.** For active folders, read `task.md` or `tasks.md`, extract status line. One line per task.
   3. context.md or any */context.md -- "What I was doing" and "What's next"
   4. docs/ -- any recent session summaries or status files
   5. STATUS.md, PLAN.md, rebuild-plan.md -- extract current status if present
