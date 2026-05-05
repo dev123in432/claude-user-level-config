@@ -151,7 +151,9 @@
     "mode": "hold"
   },
   "skipDangerousModePermissionPrompt": true,
-  "skipAutoPermissionPrompt": true,
+  "remoteControlAtStartup": false,
+  "agentPushNotifEnabled": false,
   "useAutoModeDuringPlan": true,
-  "voiceEnabled": false
+  "voiceEnabled": false,
+  "skipAutoPermissionPrompt": true
 }
