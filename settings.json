@@ -142,7 +142,7 @@
     "skill-creator@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true
   },
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
   "autoUpdatesChannel": "stable",
   "minimumVersion": "2.1.81",
   "voice": {
