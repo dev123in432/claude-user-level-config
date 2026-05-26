@@ -59,6 +59,40 @@ Hold the heat map output for Step 5. You will display it as the "Recent activity
 - Mark files that also appear in `git status --short` as "(also uncommitted)".
 - "Uncommitted only" lists files in `git status` whose path didn't appear in the commit log at all.
 
+## Step 2.6: Pull request state (project mode only)
+
+Skip in hub mode. Skip silently if `gh` is not installed or the repo has no GitHub remote (`gh repo view` returns non-zero).
+
+Run these directly:
+
+```bash
+gh pr status --json number,title,url,isDraft,reviewDecision,statusCheckRollup,updatedAt,headRefName
+```
+
+```bash
+gh pr list --author "@me" --state open --json number,title,url,updatedAt,reviewDecision,comments \
+  --jq '.[] | {number, title, url, updatedAt, reviewDecision, commentCount: (.comments | length), lastComment: (.comments | sort_by(.createdAt) | last | {author: .author.login, body: (.body[0:140]), createdAt})}'
+```
+
+```bash
+gh pr list --search "review-requested:@me" --state open \
+  --json number,title,url,author,updatedAt
+```
+
+Hold these for Step 5. Surface only PRs with activity:
+
+- **Current branch**: if `gh pr status` shows a PR for the current branch, flag it first.
+- **Mine**: any open PR I authored - show number, title, review decision, and the latest comment (author + first 140 chars) if it's not from me.
+- **Awaiting my review**: any PR where I'm requested.
+
+If a PR's `reviewDecision` is `CHANGES_REQUESTED` and you want the latest inline review comment, fetch per-PR:
+
+```bash
+gh api "repos/{owner}/{repo}/pulls/{n}/comments" --jq '.[-1] | {user: .user.login, body: (.body[0:140]), created_at}'
+```
+
+If nothing in any bucket, omit the section entirely - no "no PRs" line.
+
 ## Step 3: Gather context (via subagent)
 
 Spawn a single Explore subagent to do the reading. This keeps the heavy file content out of the main conversation. The subagent should return a short structured summary -- not raw file contents.
@@ -170,6 +204,13 @@ claude-assistant hub
 
 ## Recent activity (last 7 days)
 {Heat map output from Step 2.5, with adaptive roll-up applied. Group by parent folder; collapse folders with >3 files to "path/ - N files (top: a, b)". Mark files also in git status as "(also uncommitted)". Add an "Uncommitted only:" line for files in git status that didn't appear in the commit log.}
+
+## Pull requests
+{From Step 2.6. Group as:
+ - Current branch: #NN title - {review state} - {latest comment one-liner if not mine}
+ - Mine: one line per PR, same shape
+ - Awaiting my review: #NN title (author) - updated YYYY-MM-DD
+ Skip section entirely if empty.}
 
 ## Where we are
 {project name and one-line description}
