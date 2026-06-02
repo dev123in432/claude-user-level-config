@@ -109,16 +109,16 @@ Prompt for the agent:
   1. today.md -- is the date today's date? What's the current focus?
   2. tasks.md -- list Active items (one line each) and Waiting/Blocked items (one line each)
   3. For active projects (do this in order):
-     a. Grep tasks/*/context.md for "^status:" and "^priority:" -- build a map of folder to
+     a. Grep tasks/*/readme.md and tasks/*/context.md for "^status:" and "^priority:" -- build a map of folder to
         status and priority.
-     b. If a folder's context.md is missing status or priority in its frontmatter, show
+     b. If a folder's readme.md (or context.md) is missing status or priority in its frontmatter, show
         "not found" for the missing field(s) in the summary so the user can fix it.
-     c. For folders with status active or blocked: read context.md AND tasks.md (if present).
+     c. For folders with status active or blocked: read readme.md (or context.md) AND task.md/tasks.md (if present).
         Extract "What I was doing" and "What's next" (or first unchecked item from tasks.md).
         If status is "blocked", put in Blocked/Waiting instead of Project Snapshots.
         Also look for any @due: tags in tasks.md -- if a due date is within 7 days or overdue,
         flag it with the date.
-     d. For folders with status pointer: find the "Repo:" line in context.md, read context.md
+     d. For folders with status pointer: find the "Repo:" line in readme.md (or context.md), read it
         and tasks.md from that external path instead.
      e. Skip folders with status backlog, complete, or cancelled entirely.
      f. Sort the Project Snapshots section by priority (1 first, then 2, then 3). Within the
@@ -139,13 +139,13 @@ Prompt for the agent:
   0. docs/status/focus.md -- if it exists, read it and extract the Priorities list (everything under "## Priorities") plus the Updated: line. Compare Updated: to today's date; if more than 14 days old, flag as stale.
   1. CLAUDE.md -- project description and session guidelines
   2. tasks/ folder -- list subfolders. **A folder is "done" if it has no `task.md` or `tasks.md` (e.g. they've been renamed to `task.md.done` / `tasks.md.closed`) -- skip those entirely, do not read or report on them.** For active folders, read `task.md` or `tasks.md`, extract status line. One line per task.
-  3. context.md or any */context.md -- "What I was doing" and "What's next"
+  3. readme.md or any */readme.md (older folders may still use context.md) -- task orientation (overview, resources, gotchas); current status is in task.md, not here
   4. docs/ -- any recent session summaries or status files
   5. STATUS.md, PLAN.md, rebuild-plan.md -- extract current status if present
 - Reach back to hub (always do this):
   6. Derive the project name from the repo folder name or CLAUDE.md
   7. Read C:\Users\dinne\repos\dev123in432\claude-assistant\tasks.md -- find any line referencing this project
-  8. If a tasks/{project}/ subfolder exists in claude-assistant, read its context.md and tasks.md
+  8. If a tasks/{project}/ subfolder exists in claude-assistant, read its readme.md (or context.md) and tasks.md
 - Return bullet points grouped by: This Fortnight's Focus (from focus.md if present, else omit), Project Overview (one line), Current Status, What's Next, Blocked/Waiting.
 - For This Fortnight's Focus: list the focus.md Priorities verbatim. Prepend "(stale - last updated YYYY-MM-DD)" if Updated: is over 14 days old. If focus.md does not exist, OMIT this section and instead include a single-line note "no docs/status/focus.md - consider creating one" in your output so the main turn can surface it.
 - One line per bullet, 3-5 bullets per section max. Skip empty sections.

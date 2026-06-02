@@ -1,6 +1,6 @@
 ---
 name: task-hygiene
-description: Audit task folders for file role violations -- tasks in context, narrative in task files, missing files, stale temps. Read-only scan with summary report.
+description: Audit task folders for file role violations -- tasks in the readme, narrative in task files, missing files, stale temps. Read-only scan with summary report.
 disable-model-invocation: true
 allowed-tools: Glob, Read, Bash
 ---
@@ -21,10 +21,10 @@ Collect the list of folder names to audit.
 
 For each task folder, read all `.md` files present and check the rules below. Track issues in two categories: VIOLATION (must fix) and WARNING (review).
 
-### Rule 1: context.md must not contain checkbox items
+### Rule 1: the orientation file must not contain checkbox items
 
-Read `context.md` if it exists. If any line matches `- [ ]` or `- [x]` (case-insensitive for the x), flag as VIOLATION:
-> `{folder}/context.md`: Contains checkbox task items -- these belong in task.md/tasks.md
+Read `readme.md` (or `context.md` in older folders) if it exists. If any line matches `- [ ]` or `- [x]` (case-insensitive for the x), flag as VIOLATION:
+> `{folder}/readme.md`: Contains checkbox task items -- these belong in task.md/tasks.md
 
 ### Rule 2: task.md / tasks.md must not contain narrative sections
 
@@ -35,7 +35,7 @@ Read `task.md` or `tasks.md` if either exists. If the file contains any of these
 - `## Key files`
 - `## Open questions`
 
-> `{folder}/tasks.md`: Contains narrative section "{heading}" -- this belongs in context.md
+> `{folder}/tasks.md`: Contains narrative section "{heading}" -- this belongs in readme.md
 
 ### Rule 3: STATUS.md should be concise
 
