@@ -93,6 +93,16 @@ gh api "repos/{owner}/{repo}/pulls/{n}/comments" --jq '.[-1] | {user: .user.logi
 
 If nothing in any bucket, omit the section entirely - no "no PRs" line.
 
+## Step 2.7: Routines due (hub mode only)
+
+Skip in project mode. In hub mode run this directly (not in a subagent), passing today's date:
+
+```bash
+.venv/Scripts/python.exe scripts/routines-due.py --check --today <TODAY>
+```
+
+This prints a short "Routines due" block listing only recurring routines that are overdue or never-run (e.g. `/sort-mail brief`). It is fail-safe: if nothing is due or its run-log is corrupt it prints nothing and exits 0 (a missing log is treated as a fresh start, so first-go nudges still appear). Hold the output for Step 5. If it printed nothing, there is no routines section -- omit it entirely (same pattern as the PR section).
+
 ## Step 3: Gather context (via subagent)
 
 Spawn a single Explore subagent to do the reading. This keeps the heavy file content out of the main conversation. The subagent should return a short structured summary -- not raw file contents.
@@ -191,6 +201,9 @@ claude-assistant hub
 
 ## Git
 {branch, last commit, clean/dirty}
+
+## Routines due
+{Verbatim output from Step 2.7, minus its own "## Routines due" header line (this template supplies the header). One line per overdue routine. OMIT this whole section if Step 2.7 printed nothing -- do not write a "nothing due" line.}
 
 ## Suggested next step
 {the single most actionable thing based on what you read}
