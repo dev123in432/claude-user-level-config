@@ -145,6 +145,7 @@
     "hookify@claude-plugins-official": false
   },
   "effortLevel": "xhigh",
+  "tui": "fullscreen",
   "voice": {
     "enabled": true,
     "mode": "hold"
@@ -163,6 +164,5 @@
       "Read-only PowerShell pipelines invoked via Bash, powershell.exe or pwsh — Get-* cmdlets composed with read-only operators (Select-Object, Where-Object, ForEach-Object, Measure-Object, Sort-Object, Group-Object, Format-List, Format-Table, ConvertTo-*, ConvertFrom-*, Out-String) — are allowed without confirmation. State-changing or network-fetching PowerShell (Set-*, Remove-*, Stop-*, Start-*, New-*, Add-*, Clear-*, Write-*, Invoke-Expression, Invoke-WebRequest, Invoke-RestMethod, Invoke-Item, Register-*, encoded commands via -enc / -EncodedCommand, base64 payloads) still requires confirmation."
     ]
   },
-  "voiceEnabled": true,
-  "tui": "fullscreen"
+  "voiceEnabled": true
 }
