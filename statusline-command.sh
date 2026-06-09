@@ -5,6 +5,7 @@ model=$(echo "$input" | jq -r '.model.display_name // ""')
 used=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 rate5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 rate7d=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+effort=$(echo "$input" | jq -r '.effort.level // empty')
 
 # basename only, not full path
 folder=$(basename "$cwd")
@@ -16,11 +17,13 @@ dim='\033[2m'
 cyan='\033[36m'
 yellow='\033[33m'
 blue='\033[34m'
+magenta='\033[35m'
 sep="${dim} | ${reset}"
 
 out=""
 [ -n "$folder" ] && out="${bold}${cyan}${folder}${reset}"
 [ -n "$model" ] && out="${out}${sep}${blue}${model}${reset}"
+[ -n "$effort" ] && out="${out}${sep}${magenta}${effort}${reset}"
 if [ -n "$used" ]; then
   used_int=$(printf '%.0f' "$used")
   out="${out}${sep}${yellow}ctx: ${used_int}%${reset}"
