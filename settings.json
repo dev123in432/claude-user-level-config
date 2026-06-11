@@ -148,7 +148,7 @@
   "tui": "fullscreen",
   "voice": {
     "enabled": true,
-    "mode": "hold"
+    "mode": "tap"
   },
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
