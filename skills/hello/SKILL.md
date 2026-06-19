@@ -116,9 +116,8 @@ Prompt for the agent:
 - You are the orientation agent for the /hello skill.
 - Your job: read project files and return a structured summary. Use only Glob, Read, and Grep.
 - Read these files and extract:
-  1. today.md -- is the date today's date? What's the current focus?
-  2. tasks.md -- list Active items (one line each) and Waiting/Blocked items (one line each)
-  3. For active projects (do this in order):
+  1. tasks.md -- list Active items (one line each) and Waiting/Blocked items (one line each)
+  2. For active projects (do this in order):
      a. Grep tasks/*/readme.md and tasks/*/context.md for "^status:" and "^priority:" -- build a map of folder to
         status and priority.
      b. If a folder's readme.md (or context.md) is missing status or priority in its frontmatter, show
@@ -133,8 +132,8 @@ Prompt for the agent:
      e. Skip folders with status backlog, complete, or cancelled entirely.
      f. Sort the Project Snapshots section by priority (1 first, then 2, then 3). Within the
         same priority, items with upcoming/overdue due dates come first.
-  4. bugs.md -- list any unresolved bugs (one line each)
-- Return the summary as bullet points grouped by: Today's Focus, Active Tasks, Blocked/Waiting, Project Snapshots (one line per project, sorted by priority), Open Bugs.
+  3. bugs.md -- list any unresolved bugs (one line each)
+- Return the summary as bullet points grouped by: Active Tasks, Blocked/Waiting, Project Snapshots (one line per project, sorted by priority), Open Bugs.
 - For Project Snapshots, prefix each line with [P1], [P2], or [P3]. If a task has a due date within 7 days, append "due YYYY-MM-DD". If overdue, append "OVERDUE YYYY-MM-DD".
 - Keep it tight -- 3-5 bullets per section max. One line per bullet. Skip empty sections.
 ```
@@ -197,7 +196,7 @@ Combine the subagent's summary with the git state from Step 2.
 claude-assistant hub
 
 ## Status
-{bullets from the subagent -- today's focus, active tasks, what's next, blockers}
+{bullets from the subagent -- active tasks, what's next, blockers}
 
 ## Git
 {branch, last commit, clean/dirty}
