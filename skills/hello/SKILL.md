@@ -26,6 +26,20 @@ git status --short
 
 Hold onto the output for Step 4.
 
+## Step 2.4: Bookend dead-man check (hub mode only)
+
+The assistant repo has SessionStart/SessionEnd hooks (apps/bookend) that stamp
+`state/bookend/runlog.jsonl`. They are the automation pulse -- if they die, nothing else
+notices, so /hello is the external observer. Run:
+
+```bash
+tail -2 state/bookend/runlog.jsonl
+```
+
+If the file is missing or the latest `"ev":"start"` stamp is not from today, warn loudly at
+the top of your summary: `bookend hooks may be dead -- no start stamp today (check
+.claude/settings.json hooks + node)`. If stamps are current, say nothing about it.
+
 ## Step 2.5: Git activity heat map (project mode only)
 
 Skip in hub mode. In project mode run these directly (not in a subagent):
@@ -160,6 +174,14 @@ Prompt for the agent:
 - One line per bullet, 3-5 bullets per section max. Skip empty sections.
 ```
 
+## Step 3.5: Pinned project -- Relationship (hub mode only, do this yourself)
+
+`tasks/relationship/` is a OneDrive symlink that Glob will NOT traverse, so the Step 3 subagent never sees it. It is currently the single most important personal project and must ALWAYS appear in the orientation. Do this in the main turn (not the subagent):
+
+- Read `tasks/relationship/context.md` directly, plus `tasks/relationship/tasks.md` (first unchecked item under the current focus).
+- Surface it as the FIRST item in the Status / Project Snapshots section, marked [P1], as one brief line: title + current next step only. Keep it concise and non-sensitive -- do NOT quote incident detail.
+- PRIVACY: this pin is live-output ONLY. Do NOT write the relationship project into `status-report.md` (that file is committed to GitHub; `tasks/relationship/` is deliberately kept off GitHub). See Step 4.
+
 ## Step 4: Write status report (hub mode only)
 
 Only do this in hub mode. Skip entirely in project mode.
@@ -180,6 +202,7 @@ Generated: {YYYY-MM-DD HH:MM}
 
 Rules:
 - Only include projects with status active, blocked, or pointer. Skip backlog, complete, and cancelled.
+- NEVER include the relationship project (`tasks/relationship/`) in `status-report.md` -- it is kept off GitHub for privacy and this file is committed. It appears only in the live /hello output (Step 3.5).
 - Sort by priority then status (active → blocked → pointer).
 - The summary column is one short sentence -- what the project is or what's happening in it.
 - Use the data already gathered by the subagent in Step 3 -- do not re-read files.
@@ -196,13 +219,12 @@ Combine the subagent's summary with the git state from Step 2.
 claude-assistant hub
 
 ## Status
-{bullets from the subagent -- active tasks, what's next, blockers}
+{Lead with the pinned Relationship project from Step 3.5 as the first [P1] line (title + next step), then the bullets from the subagent -- active tasks, what's next, blockers}
 
 ## Git
 {branch, last commit, clean/dirty}
 
-## Routines due
-{Verbatim output from Step 2.7, minus its own "## Routines due" header line (this template supplies the header). One line per overdue routine. OMIT this whole section if Step 2.7 printed nothing -- do not write a "nothing due" line.}
+{Verbatim output from Step 2.7 -- it already includes its own "## Routines due" and/or "## What matters" headers. Print it as-is. OMIT entirely if Step 2.7 printed nothing -- do not write a "nothing due" line.}
 
 ## Suggested next step
 {the single most actionable thing based on what you read}
