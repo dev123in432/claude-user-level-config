@@ -144,7 +144,7 @@
     "skill-creator@claude-plugins-official": true,
     "hookify@claude-plugins-official": false
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "low",
   "tui": "fullscreen",
   "voice": {
     "enabled": true,
