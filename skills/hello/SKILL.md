@@ -123,6 +123,8 @@ Spawn a single Explore subagent to do the reading. This keeps the heavy file con
 
 Important: the subagent must use only Glob, Read, and Grep tools. Do NOT give it Bash access.
 
+Model: this is pure read/grep/extract/summarise -- no deep reasoning -- so run it on a small, fast model. Pass `model: "haiku"` to the Agent tool when you spawn it; do NOT let it inherit the session's Opus/high-effort model. (Bump to `sonnet` only if a run comes back visibly wrong.)
+
 ### Hub mode -- tell the subagent:
 
 ```
