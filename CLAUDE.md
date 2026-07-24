@@ -18,3 +18,6 @@ Epistemics (fail-loud applies to conversation too):
   words: "in progress", "pending", "rebuilding" are banned unless
   followed by who, what, when.
 - If uncertain, say so and name the single check that would resolve it.
+
+## Tasks and status from md files
+Files like task.md tasks.mf runsheet.md etc. are used throughout. However they can become stale. Everytime you read a status or task from a md file check the modified date to see the risk of how stale it could be. 
