@@ -115,7 +115,9 @@ Skip in project mode. In hub mode run this directly (not in a subagent), passing
 .venv/Scripts/python.exe scripts/routines-due.py --check --today <TODAY>
 ```
 
-This prints a short "Routines due" block listing only recurring routines that are overdue or never-run (e.g. `/sort-mail brief`). It is fail-safe: if nothing is due or its run-log is corrupt it prints nothing and exits 0 (a missing log is treated as a fresh start, so first-go nudges still appear). Hold the output for Step 5. If it printed nothing, there is no routines section -- omit it entirely (same pattern as the PR section).
+This prints up to three blocks: "## Deadlines" (dated commitments inside their warning window, escalating to OVERDUE -- read from bookend's `expiry[]` list, so /hello and the bookend session brief nag off ONE source), "## Routines due" (recurring routines overdue or never-run, e.g. `/sort-mail brief`), and "## What matters". It is fail-safe: if nothing is due or its run-log is corrupt it prints nothing and exits 0 (a missing log is treated as a fresh start, so first-go nudges still appear). Hold the output for Step 5. If it printed nothing, there is no routines section -- omit it entirely (same pattern as the PR section).
+
+Deadlines outrank everything else in the orientation. If that block has an OVERDUE or DUE TODAY line, it belongs in "Suggested next step" / "YOUR MOVE", not just buried in the verbatim block.
 
 ## Step 3: Gather context (via subagent)
 
@@ -226,7 +228,7 @@ claude-assistant hub
 ## Git
 {branch, last commit, clean/dirty}
 
-{Verbatim output from Step 2.7 -- it already includes its own "## Routines due" and/or "## What matters" headers. Print it as-is. OMIT entirely if Step 2.7 printed nothing -- do not write a "nothing due" line.}
+{Verbatim output from Step 2.7 -- it already includes its own "## Deadlines", "## Routines due" and/or "## What matters" headers. Print it as-is. OMIT entirely if Step 2.7 printed nothing -- do not write a "nothing due" line.}
 
 ## Suggested next step
 {the single most actionable thing based on what you read}
