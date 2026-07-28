@@ -156,7 +156,7 @@
   "theme": "auto",
   "editorMode": "normal",
   "autoCompactEnabled": true,
-  "remoteControlAtStartup": true,
+  "remoteControlAtStartup": false,
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": false,
   "skipAutoPermissionPrompt": true,
