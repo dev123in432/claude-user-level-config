@@ -132,6 +132,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "claude-fable-5[1m]",
   "worktree": {
     "baseRef": "fresh"
   },
@@ -145,7 +146,7 @@
     "skill-creator@claude-plugins-official": true,
     "hookify@claude-plugins-official": false
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "tui": "fullscreen",
   "voice": {
     "enabled": true,
