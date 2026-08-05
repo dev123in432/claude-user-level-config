@@ -1,5 +1,6 @@
 ---
 name: productivity-sprint
+disable-model-invocation: true
 description: ADHD-friendly time-boxed work sprint with mid-point check-in and post-sprint retro. Captures planned vs actual time, scope creep, and qualitative signals into per-session files in OneDrive so estimation gets better over time.
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, ScheduleWakeup
 ---

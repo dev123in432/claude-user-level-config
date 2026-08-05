@@ -1,5 +1,6 @@
 ---
 name: sleep-dream
+disable-model-invocation: true
 description: Periodic memory maintenance for the auto-memory system. Prunes stale memories to an archive, consolidates duplicates and broken links, and "dreams" - picks the highest-friction session since the last run (max 7 days back) and proposes a memory that would have eased it, then simulates the session to confirm. Modelled on sleep-stage consolidation (NREM replay, SHY pruning, REM counterfactual simulation, overfitted-brain regularisation, threat-simulation gating). Use when memory feels cluttered or weekly as routine hygiene.
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent, AskUserQuestion
 ---
