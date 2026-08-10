@@ -1,6 +1,6 @@
 ---
-name: hello3
-description: Session orientation, trial C (breadcrumb protocol). A dated PICKUP line written at session close is the primary orientation source; falls back to a git evidence scan when the breadcrumb is missing or stale. Invoke via /hello3 only, never automatically.
+name: quick-hello
+description: Fast session orientation via the breadcrumb protocol. A dated PICKUP line written at session close is the primary orientation source; falls back to a git evidence scan when the breadcrumb is missing or stale. The lean twin of /hello. Invoke via /quick-hello.
 allowed-tools: Read, Grep, Glob, Bash
 ---
 
@@ -20,12 +20,8 @@ NEXT: run ERM_30 gate in per_row mode. Done when TEST section 10 shows
 ```
 
 One or two lines. What landed (with date), the next move, its done-check.
-Written at session close by /goodbye or by hand. This skill reads it; it
-never writes it.
-
-(One-line addition for the /goodbye skill to make this stick: "Before
-wrapping up, write or refresh the PICKUP block at the top of the active
-task.md: what landed with dates, the next move, its done-when.")
+Written at session close by /goodbye (hub) or /quick-goodbye (ESG), or by
+hand. This skill reads it; it never writes it.
 
 ## Steps (run directly, no subagent)
 
