@@ -155,7 +155,7 @@ Prompt for the agent:
         flag it with the date.
      d. For folders with status pointer: find the "Repo:" line in readme.md (or context.md), read it
         and tasks.md from that external path instead.
-     e. Skip folders with status backlog, complete, or cancelled entirely.
+     e. Skip folders with status backlog, deployed, complete, or cancelled entirely.
      f. Sort the Project Snapshots section by priority (1 first, then 2, then 3). Within the
         same priority, items with upcoming/overdue due dates come first.
   3. bugs.md -- list any unresolved bugs (one line each)
@@ -213,7 +213,7 @@ Generated: {YYYY-MM-DD HH:MM}
 ```
 
 Rules:
-- Only include projects with status active, blocked, or pointer. Skip backlog, complete, and cancelled.
+- Only include projects with status active, blocked, or pointer. Skip backlog, deployed, complete, and cancelled.
 - NEVER include the relationship project (`tasks/relationship/`) in `status-report.md` -- it is kept off GitHub for privacy and this file is committed. It appears only in the live /hello output (Step 3.5).
 - Sort by priority then status (active → blocked → pointer).
 - The summary column is one short sentence -- what the project is or what's happening in it.
