@@ -127,6 +127,16 @@ Do not stamp if no Shelf block appeared. Never mention the stamp to David.
 
 Deadlines outrank everything else in the orientation. If that block has an OVERDUE or DUE TODAY line, it belongs in "Suggested next step" / "YOUR MOVE", not just buried in the verbatim block.
 
+## Step 2.8: Task-doc hygiene (project mode only)
+
+Skip in hub mode. Run the task-doc linter's summary directly (not in the subagent). It is stdlib-only, so a plain `python` works, and it defaults to scanning `tasks/` under the current directory:
+
+```bash
+python "$HOME/.claude/skills/task-tidy/task_md_lint.py" --all --summary
+```
+
+It prints one line per task.md/readme.md that has drifted past the structure rules, or `task docs: all clean`. Hold for Step 5. If any files are listed, surface a single line under "Worth a look": `task docs: N file(s) need /task-tidy (e.g. X, Y)`. If it says all clean, say nothing about it.
+
 ## Step 3: Gather context (via subagent)
 
 Spawn a single Explore subagent to do the reading. This keeps the heavy file content out of the main conversation. The subagent should return a short structured summary -- not raw file contents.
@@ -271,7 +281,8 @@ claude-assistant hub
 {Cross-check focus.md against the heat map. Include a bullet only when something has actually drifted:
  - A focus.md priority has zero matching paths in the 7-day heat map and none in git status (might be stalling or stale).
  - A path with >2 hits in the heat map (or its parent folder) does not appear anywhere in focus.md (might deserve to).
- Skip the section entirely if there's no divergence. Max 2-3 lines.}
+ - Task docs flagged by Step 2.8 as needing /task-tidy (one line, up to 3 files named).
+ Skip the section entirely only if there's no divergence AND no flagged task docs. Max 2-3 lines.}
 
 ## Suggested next step
 {the single most actionable thing based on what you read}

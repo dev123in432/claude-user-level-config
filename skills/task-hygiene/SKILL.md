@@ -52,11 +52,21 @@ Use Glob to check for any files in `{folder}/tmp/`. If files exist, flag as WARN
 If the folder contains neither `task.md` nor `tasks.md`, flag as WARNING:
 > `{folder}`: No task.md or tasks.md found -- every active task folder should have one
 
+### Rule 6: Run the deterministic structure linter
+
+The `task-tidy` skill bundles `task_md_lint.py`, the executable form of the task-doc structure rules (`~/.claude/skills/task-tidy/task-docs.md`). Run it read-only over the same target so this audit catches what the heading greps above miss -- stacked PICKUP blocks, undated `[x]` clusters, un-triaged `## Inbox from` dumps, pasted output / wide tables, `>>` author notes, `### Done` archive blocks, and readme.md carrying live state:
+
+```bash
+python "$HOME/.claude/skills/task-tidy/task_md_lint.py" --all --check
+```
+
+For a single provided path, use `--file {path}/task.md` and `--file {path}/readme.md` instead. Fold each linter finding into the report: a `[VIOLATION]` line is a VIOLATION, a `[WARNING]` line is a WARNING, attributed to the file the linter names. Do not re-implement its checks here -- it is the single source of truth, so if a rule needs changing, change the script.
+
 ## Step 3: Determine folder status
 
 For each folder:
-- **VIOLATION** if any Rule 1 or Rule 2 issues found
-- **WARNING** if any Rule 3, 4, or 5 issues found (but no violations)
+- **VIOLATION** if any Rule 1, 2, or 6 VIOLATION issues found
+- **WARNING** if any Rule 3, 4, 5, or 6 WARNING issues found (but no violations)
 - **CLEAN** if no issues
 
 ## Step 4: Output the report
