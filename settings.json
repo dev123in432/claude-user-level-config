@@ -132,7 +132,7 @@
     ],
     "defaultMode": "default"
   },
-  "model": "claude-fable-5[1m]",
+  "model": "claude-opus-4-8",
   "skillOverrides": {},
   "worktree": {
     "baseRef": "fresh"
@@ -148,6 +148,11 @@
     "hookify@claude-plugins-official": false
   },
   "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-opus-4-8": {
+      "effortLevel": "xhigh"
+    }
+  },
   "tui": "fullscreen",
   "voice": {
     "enabled": true,
@@ -158,6 +163,7 @@
   "theme": "auto",
   "editorMode": "normal",
   "autoCompactEnabled": true,
+  "autoContinueAtUsageLimit": true,
   "remoteControlAtStartup": false,
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": false,
