@@ -1,0 +1,204 @@
+{
+  "projectName": "DCCEEW Investment Pipeline Tool",
+  "clientName": "DCCEEW NSW",
+  "estimateVersion": "V2",
+  "estimateDate": "2026-04-01",
+  "preparedBy": "James Diekman",
+  "model": "phase",
+  "financialYear": "FY26",
+  "discount": 0,
+  "flatContingency": 0.05,
+  "gst": 0.10,
+  "phases": [
+    {
+      "name": "Discovery & Design",
+      "startDate": "2026-04-07",
+      "endDate": "2026-04-18"
+    },
+    {
+      "name": "Core Build",
+      "startDate": "2026-04-21",
+      "endDate": "2026-05-23"
+    },
+    {
+      "name": "UAT & Refinement",
+      "startDate": "2026-05-26",
+      "endDate": "2026-06-13"
+    },
+    {
+      "name": "Go-Live & Handover",
+      "startDate": "2026-06-16",
+      "endDate": "2026-06-27"
+    }
+  ],
+  "tasks": [
+    {
+      "phase": "Discovery & Design",
+      "objective": "Project kickoff, stakeholder alignment, requirements confirmation, UAT plan",
+      "function": "Project Manager",
+      "rateBand": "Senior",
+      "solutionArea": "Project Management",
+      "days": 3
+    },
+    {
+      "phase": "Discovery & Design",
+      "objective": "Solution design, Power Pages architecture, Entra ID spike, wireframes for wizard, approval and dashboard pages",
+      "function": "Power Platform Developer (Lead)",
+      "rateBand": "Senior",
+      "solutionArea": "Setup and Design",
+      "days": 3
+    },
+    {
+      "phase": "Discovery & Design",
+      "objective": "Environment setup, portal provisioning, theme and branding, navigation structure",
+      "function": "Power Platform Developer",
+      "rateBand": "Associate",
+      "solutionArea": "Setup and Design",
+      "days": 2
+    },
+    {
+      "phase": "Core Build",
+      "objective": "Sprint management, fortnightly client demos, scope management",
+      "function": "Project Manager",
+      "rateBand": "Senior",
+      "solutionArea": "Project Management",
+      "days": 3
+    },
+    {
+      "phase": "Core Build",
+      "objective": "5-step initiative submission wizard with validation, Entra ID auto-fill, save-as-draft, security model and web roles",
+      "function": "Power Platform Developer (Lead)",
+      "rateBand": "Senior",
+      "solutionArea": "Development",
+      "days": 7
+    },
+    {
+      "phase": "Core Build",
+      "objective": "Sponsor approval portal page (review, approve/reject with comments), Pipeline Manager and ELT decision dashboard with scoring overview",
+      "function": "Power Platform Developer (Lead)",
+      "rateBand": "Senior",
+      "solutionArea": "Development",
+      "days": 3
+    },
+    {
+      "phase": "Core Build",
+      "objective": "Power Automate: sponsor approval workflow, status change notifications, email alerts on submission/changes",
+      "function": "Power Platform Developer (Lead)",
+      "rateBand": "Senior",
+      "solutionArea": "Development",
+      "days": 2
+    },
+    {
+      "phase": "Core Build",
+      "objective": "Excel upload Power Automate flow with mapping template, data validation and error handling for bulk initiative import",
+      "function": "Power Platform Developer (Lead)",
+      "rateBand": "Senior",
+      "solutionArea": "Data Migration",
+      "days": 1
+    },
+    {
+      "phase": "Core Build",
+      "objective": "Entity lists with Group/Agency filtering, search, initiative views per role (My Initiatives, All Initiatives, Pipeline view)",
+      "function": "Power Platform Developer",
+      "rateBand": "Associate",
+      "solutionArea": "Development",
+      "days": 4
+    },
+    {
+      "phase": "Core Build",
+      "objective": "Basic visual reporting: pipeline status charts, initiative counts by category/agency, scoring summary views for sector leads and admin",
+      "function": "Power Platform Developer",
+      "rateBand": "Associate",
+      "solutionArea": "Development",
+      "days": 3
+    },
+    {
+      "phase": "Core Build",
+      "objective": "Prioritisation scoring (7 fields, weighted calculation), audit logging, hyperlinks to supporting documentation",
+      "function": "Power Platform Developer",
+      "rateBand": "Associate",
+      "solutionArea": "Development",
+      "days": 3
+    },
+    {
+      "phase": "UAT & Refinement",
+      "objective": "UAT coordination, test script facilitation, defect triage",
+      "function": "Project Manager",
+      "rateBand": "Senior",
+      "solutionArea": "UAT Support",
+      "days": 1
+    },
+    {
+      "phase": "UAT & Refinement",
+      "objective": "Bug fixes from UAT (2 rounds), performance hardening, security testing across all portal pages",
+      "function": "Power Platform Developer (Lead)",
+      "rateBand": "Senior",
+      "solutionArea": "Testing",
+      "days": 4
+    },
+    {
+      "phase": "UAT & Refinement",
+      "objective": "UAT support, bug fixes, data validation, regression testing on reporting and approval flows",
+      "function": "Power Platform Developer",
+      "rateBand": "Associate",
+      "solutionArea": "Testing",
+      "days": 3
+    },
+    {
+      "phase": "Go-Live & Handover",
+      "objective": "Go-live management, project closure, lessons learned",
+      "function": "Project Manager",
+      "rateBand": "Senior",
+      "solutionArea": "Go-Live / Cutover",
+      "days": 1
+    },
+    {
+      "phase": "Go-Live & Handover",
+      "objective": "Production deployment, initial Excel data load (~140 initiatives), smoke testing, hypercare",
+      "function": "Power Platform Developer (Lead)",
+      "rateBand": "Senior",
+      "solutionArea": "Go-Live / Cutover",
+      "days": 2
+    },
+    {
+      "phase": "Go-Live & Handover",
+      "objective": "Admin guide, Excel upload template documentation, knowledge transfer session",
+      "function": "Power Platform Developer",
+      "rateBand": "Associate",
+      "solutionArea": "Handover / Transition",
+      "days": 1
+    }
+  ],
+  "paymentMilestones": [
+    {
+      "name": "M1 - Project Kickoff",
+      "percentage": 0.10,
+      "dueDate": "2026-04-07",
+      "criteria": "Contract signed, environments confirmed, kickoff completed"
+    },
+    {
+      "name": "M2 - Design Sign-Off",
+      "percentage": 0.20,
+      "dueDate": "2026-04-18",
+      "criteria": "Signed requirements register, wireframes approved for wizard, approval pages and dashboards"
+    },
+    {
+      "name": "M3 - Core Build Complete",
+      "percentage": 0.30,
+      "dueDate": "2026-05-23",
+      "criteria": "Portal, wizard, approval pages, reporting views, Excel upload flow deployed to UAT"
+    },
+    {
+      "name": "M4 - UAT Sign-Off",
+      "percentage": 0.20,
+      "dueDate": "2026-06-13",
+      "criteria": "Client UAT completion form signed, all P1/P2 defects resolved"
+    },
+    {
+      "name": "M5 - Go-Live",
+      "percentage": 0.20,
+      "dueDate": "2026-06-27",
+      "criteria": "Production deployed, initial data loaded via Excel upload, handover complete"
+    }
+  ]
+}

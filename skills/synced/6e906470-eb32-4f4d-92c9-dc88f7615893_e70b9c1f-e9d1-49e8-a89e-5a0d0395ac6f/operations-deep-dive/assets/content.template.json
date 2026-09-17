@@ -1,0 +1,85 @@
+{
+  "_README": "Blank template. Copy to assets/content.<quarter>.local.json (gitignored) and fill from this quarter's notes. Replace every <placeholder>. Do not commit a populated copy - it will contain names, pay/role changes and candid notes. Angle-bracket text is a prompt to fill, not literal output.",
+  "config": {
+    "title": "Operations deep dive",
+    "subtitle": "Workshop summary and 30/60/90 plan",
+    "quarter_label": "<e.g. Q4 FY26>",
+    "doc_date": "<e.g. 20 May 2026>",
+    "workshop_context": "<e.g. Earlier in May 2026 - used in the opening sentence>",
+    "plan_start": "<e.g. 25 May 2026 - a Monday reads best; phase dates are computed from this>",
+    "ceo_name": "<CEO full name>",
+    "owner_name": "<operations owner full name>",
+    "owner_title": "<operations owner title, e.g. Head of Professional Services>",
+    "org_chart_image": "<optional absolute path to org chart PNG, or empty string>",
+    "output_dir": "<absolute path to the folder where the .docx/.pptx should be written>",
+    "file_stem": "Operations Deep Dive - Workshop Summary and 30-60-90",
+    "deck_name": "Operations Deep Dive - Readout",
+    "_comment": "deck_template is optional; defaults to the accelerate-slides 2026 template. Override only to use a different .pptx."
+  },
+  "audiences": ["confidential", "team"],
+  "wins": [
+    "<a win worth protecting - what's working and why it matters>",
+    "<another win>"
+  ],
+  "themes": [
+    {"title": "<theme title, e.g. Project lifecycle and onboarding>", "body": "<2-4 plain sentences naming the gap and why it costs us time or margin>"},
+    {"title": "<theme title>", "body": "<2-4 sentences>"}
+  ],
+  "decisions": [
+    "<a decision settled in the room - stated as settled, not up for debate>"
+  ],
+  "kpis": [
+    {"kpi": "Forecast utilisation", "target": "75-100%", "owner": "Practice Leads", "cadence": "Weekly", "source": "Resource Guru"},
+    {"kpi": "Actual utilisation", "target": "75-100%", "owner": "Practice Leads", "cadence": "Weekly / monthly", "source": "D365 timesheets"},
+    {"kpi": "Project probability (actual)", "target": "55% or above", "owner": "Project Managers", "cadence": "Monthly, per project", "source": "D365 Projects"},
+    {"kpi": "Projects over or forecast over budget", "target": "Every at-risk project flagged with a recovery plan; none unmanaged", "owner": "Project Managers", "cadence": "Weekly", "source": "D365 Projects"},
+    {"kpi": "Timesheet compliance", "target": "100% entered daily", "owner": "Everyone; Practice Leads enforce", "cadence": "Weekly", "source": "D365 timesheets"},
+    {"kpi": "Estimate vs actual variance", "target": "Within 10% either way at sprint close", "owner": "Tech Leads and PMs", "cadence": "Per sprint", "source": "DevOps + D365"},
+    {"kpi": "D365 Projects and milestone currency", "target": "100% of active projects current", "owner": "PMO", "cadence": "Weekly", "source": "D365 Projects"},
+    {"kpi": "Requirements ratified against contract", "target": "100% after workshops", "owner": "Practice Leads and PMs", "cadence": "Per project", "source": "Project record"}
+  ],
+  "accountability": {
+    "ceo": {"label": "<CEO first name> (CEO)", "scope": "<the calls only the CEO can make: policy, contracts, remuneration, resourcing; holds the owner to the KPIs>"},
+    "owner": {"label": "<owner first name> (<title>)", "scope": "<owns the operating system end to end: ratifies roles, runs the scorecard, builds the cadence>"},
+    "team": [
+      {"role": "Practice Leads", "scope": "<utilisation, solution architecture, document review, escalations, pre-sales, hiring, performance reviews, early adoption>"},
+      {"role": "Tech Leads", "scope": "<design proposals, knowledge transfer, estimate accuracy, DevOps discipline>"},
+      {"role": "PMO", "scope": "<D365 Projects, milestone tracking, onboarding, reporting>"},
+      {"role": "Project Managers", "scope": "<probability, budget, variations, change requests, escalations, RAID governance>"}
+    ]
+  },
+  "phases": [
+    {"title": "define and decide", "intro": "Set the foundations. Agree the standards, write the roles, and stand up the systems.", "actions": [
+      {"action": "<foundational action>", "owner": "<owner>", "done_when": "<observable completion state>"}
+    ]},
+    {"title": "embed", "intro": "Operationalise the decisions. Get the cadence running and the data flowing.", "actions": [
+      {"action": "<embedding action>", "owner": "<owner>", "done_when": "<observable completion state>"},
+      {"action": "<a sensitive action - confidential version wording>", "owner": "<owner>", "done_when": "<...>", "confidential": true, "team_action": "<team-safe rephrasing shown in the team version instead>"}
+    ]},
+    {"title": "optimise and hold", "intro": "Measure, prove it works, and lock it into business as usual.", "actions": [
+      {"action": "<optimise/sustain action>", "owner": "<owner>", "done_when": "<observable completion state>"}
+    ]}
+  ],
+  "ideas": [
+    "<an idea that sits alongside the plan rather than inside it>"
+  ],
+  "annex": [
+    {"heading": "<confidential heading, e.g. Role and remuneration>", "items": [
+      "<confidential item - this block appears in the confidential version only>"
+    ]}
+  ],
+  "deck": {
+    "_comment": "Fill only when building the readout deck. Keep each bullet to roughly one line; the deck is always team-safe (no confidential content).",
+    "wins": [],
+    "themes": [],
+    "decisions": [],
+    "kpis": [],
+    "accountability": [],
+    "phases": [
+      {"title": "define and decide", "bullets": []},
+      {"title": "embed", "bullets": []},
+      {"title": "optimise and hold", "bullets": []}
+    ],
+    "ideas": []
+  }
+}
