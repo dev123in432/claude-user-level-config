@@ -154,7 +154,8 @@
       "name": "accelerate-quote",
       "description": "Generate Accelerate Tech branded one-page quotes for client engagements. Use this skill whenever the user asks to create a quote, proposal quote, engagement quote, client quote, one-pager quote, or pricing document for Accelerate Tech. Also trigger when the user says things like \"quote for [client]\", \"price up an engagement\", \"put together a quote\", \"generate a quote doc\", or references the one-page quote template. This skill handles both Time & Materials and Fixed Price commercial models. Always use this skill for any Accelerate Tech quoting activity — even quick informal requests like \"knock up a quote for Camden Council\".",
       "source": "custom",
-      "updatedAt": "2026-08-05T01:27:53.081535Z"
+      "updatedAt": "2026-08-05T01:27:53.081535Z",
+      "backingPluginId": "plugin_015GndfYNBdsePV3vXURanqF"
     },
     {
       "skillId": "skill_011c3XG8btkJyRQyzLdiiAXu",
