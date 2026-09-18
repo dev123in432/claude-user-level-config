@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1789608130586,
+  "lastUpdated": 1789691505830,
   "skills": [
     {
       "skillId": "docs",
@@ -48,7 +48,8 @@
       "name": "excalidraw-c4-architecture",
       "description": "Generate Excalidraw `.excalidraw` JSON files for C4 model architecture diagrams at all four levels: Context, Container, Component, and Code. Use this skill whenever the user asks for a C4 diagram, C4 model, context diagram, container diagram, component diagram, system context, software architecture using C4, or wants to visualize software architecture at different levels of abstraction. Also trigger when the user says \"draw a C4\", \"show the system context\", \"container view of the system\", \"component breakdown\", \"C4 level 1/2/3/4\", or references the C4 model by Simon Brown. Produces static .excalidraw JSON files that open directly in excalidraw.com or VS Code - no server needed.",
       "source": "custom",
-      "updatedAt": "2026-08-05T00:57:04.544736Z"
+      "updatedAt": "2026-08-05T00:57:04.544736Z",
+      "backingPluginId": "plugin_01TDq9yeeP1iLSM1h1DWYvUp"
     },
     {
       "skillId": "skill_01Hdo2i4pTFPcbaxPooV9QbY",
@@ -159,8 +160,9 @@
       "skillId": "skill_011c3XG8btkJyRQyzLdiiAXu",
       "name": "as-built",
       "description": "Generate an As Built Document (.docx) from a Power Platform solution export using the Accelerate Technology template. Use when the user asks for an \"as built\" document, asks to document a Power Platform solution, or provides a solution .zip and wants delivery documentation.",
-      "source": "custom",
-      "updatedAt": "2026-08-05T01:53:26.325686Z"
+      "source": "plugin",
+      "updatedAt": "2026-09-17T16:32:51.484393Z",
+      "backingPluginId": "plugin_0162dPmgucwzhhKCLbPrcj1a"
     },
     {
       "skillId": "canvas-design",
