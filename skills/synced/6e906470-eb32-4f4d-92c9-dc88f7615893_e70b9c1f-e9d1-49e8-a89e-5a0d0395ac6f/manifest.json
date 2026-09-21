@@ -13,7 +13,8 @@
       "name": "design-document",
       "description": "Write a new numbered section for a project's Solution Architecture Document, following consistent conventions for purpose, background, design, entity model (Mermaid ER), field mappings, configuration dependencies, design decisions, and validation rules. Use whenever the user asks to add or update a numbered design doc, document a new domain or feature design, or capture a design decision in a project's architecture document.",
       "source": "custom",
-      "updatedAt": "2026-08-05T00:57:02.404285Z"
+      "updatedAt": "2026-08-05T00:57:02.404285Z",
+      "backingPluginId": "plugin_01Xxn7omoipBvpJ6jm4nGxCf"
     },
     {
       "skillId": "import-memory",
@@ -27,21 +28,24 @@
       "name": "word-doc",
       "description": "Generate a branded Word document (.docx) using a client or company template as the style donor. Inherits fonts, heading colors, table styles, and page setup from a donor .docx so output matches the client's brand. Use whenever the user asks to create a Word document, generate a .docx, export to Word, or produce a client-ready document.",
       "source": "custom",
-      "updatedAt": "2026-08-05T01:50:59.914271Z"
+      "updatedAt": "2026-08-05T01:50:59.914271Z",
+      "backingPluginId": "plugin_01CLLf71w77vufvtRV39NfjK"
     },
     {
       "skillId": "skill_01HhdUKhUpcEXy2tnu53V2v9",
       "name": "excalidraw-solution-architecture",
       "description": "Generate Excalidraw `.excalidraw` JSON files for solution architecture diagrams showing how systems, services, and infrastructure fit together. Use this skill whenever the user asks for a solution architecture diagram, system architecture, infrastructure diagram, cloud architecture, network topology, microservices diagram, deployment architecture, integration diagram, or technical architecture overview. Also trigger when the user says \"diagram the architecture\", \"show how the system works\", \"draw the infrastructure\", \"visualize the tech stack\", \"map out the services\", or wants to show how cloud services, APIs, databases, queues, and frontends connect. Supports AWS, Azure, GCP, and generic/on-prem patterns. Produces static .excalidraw JSON files that open directly in excalidraw.com or VS Code - no server needed.",
       "source": "custom",
-      "updatedAt": "2026-08-05T00:57:06.553701Z"
+      "updatedAt": "2026-08-05T00:57:06.553701Z",
+      "backingPluginId": "plugin_01YHnyj7PQFYVLZJX9HTEJQG"
     },
     {
       "skillId": "skill_01DBsQP6UiXRi6zj8qPwm7dv",
       "name": "excalidraw-process-diagram",
       "description": "Generate Excalidraw `.excalidraw` JSON files for business process diagrams, workflows, and flowcharts. Use this skill whenever the user asks for a process diagram, workflow diagram, BPMN diagram, flowchart, decision tree, swimlane diagram, process flow, approval workflow, onboarding flow, or any kind of step-by-step business process visualization. Also trigger when the user says things like \"diagram this process\", \"map out the workflow\", \"show the approval flow\", \"visualize the steps\", or wants to show how a business process works with decisions and branching. This skill produces static .excalidraw JSON files that open directly in excalidraw.com or the VS Code Excalidraw extension - no server or MCP needed.",
       "source": "custom",
-      "updatedAt": "2026-08-05T00:57:05.558144Z"
+      "updatedAt": "2026-08-05T00:57:05.558144Z",
+      "backingPluginId": "plugin_01TjzwVEvXzEqrkYyxx15AZE"
     },
     {
       "skillId": "skill_0146E3YDMZVgy134f1B1MXSa",
@@ -56,35 +60,40 @@
       "name": "anti-ai-writing",
       "description": "Audit and rewrite content to remove AI writing patterns, or write new content that reads as human from the start. Use this skill whenever the user asks to \"clean up\" writing, \"remove AI tells\", \"make this sound human\", \"humanise this\", \"audit for AI patterns\", \"de-slop\", \"write like a human\", or any variation. Also trigger when the user asks to write new content and mentions wanting it to sound natural, authentic, not AI-generated, or human. Trigger on phrases like \"write this properly\", \"no AI voice\", \"make it sound like me\", \"anti-AI\", \"anti-slop\", or \"humanise\". Use for blog posts, proposals, LinkedIn posts, emails, reports, SOWs, case studies, landing pages, and any prose output. If in doubt about whether to use this skill, use it - false positives are better than letting AI slop through.",
       "source": "custom",
-      "updatedAt": "2026-08-05T01:28:34.152812Z"
+      "updatedAt": "2026-08-05T01:28:34.152812Z",
+      "backingPluginId": "plugin_01RwHaFyBEqYhQK2xMqVjDJD"
     },
     {
       "skillId": "skill_01DAdM9M6NY8czgwjZ32dBiN",
       "name": "accelerate-goal-setting",
       "description": "Runs the Accelerate Tech quarterly goal-setting interview and generates a branded FASSD goal submission document (.docx). Use this skill whenever a department head (or the CEO) wants to develop, test, or document a quarterly goal. Triggers on phrases like \"set a quarterly goal\", \"I want to submit a goal\", \"help me write a Q goal\", \"FASSD goal\", \"quarterly planning\", \"goal for next quarter\", \"develop my Q goals\", or any mention of submitting goals for a quarter. Always use this skill — do not attempt to run the FASSD interview from memory without it.",
       "source": "custom",
-      "updatedAt": "2026-08-05T01:26:46.978159Z"
+      "updatedAt": "2026-08-05T01:26:46.978159Z",
+      "backingPluginId": "plugin_01Xn78F5oe4jYveTrYJGKGJx"
     },
     {
       "skillId": "skill_01TQmyPjWuAfkE8Q786duaWh",
       "name": "accelerate-estimate",
       "description": "Generate professional project estimation workbooks for Accelerate Tech engagements. Supports sprint-based, days-per-phase, time & materials, and managed services models. Use this skill whenever the user asks to create a project estimate, cost an engagement, build a resource plan, price a quote, or generate a budget. Also trigger when they mention rate cards, roles, contingency, estimation models, or provide an RFP/scope for costing.",
       "source": "custom",
-      "updatedAt": "2026-08-05T01:26:41.459159Z"
+      "updatedAt": "2026-08-05T01:26:41.459159Z",
+      "backingPluginId": "plugin_019Z5EHJEagrfWFAZziErGf5"
     },
     {
       "skillId": "skill_01EdW2ZdbZTaYQoLidhT8RJ9",
       "name": "operations-deep-dive",
       "description": "Turn an Accelerate operations deep dive / war room into a branded workshop summary with a 30/60/90 day plan, clear KPIs, and accountability for the CEO, the operations owner, and the team. Produces a confidential Word version and a sanitised team Word version by default, and an on-brand readout deck on request. Use this skill whenever the user mentions an operations deep dive, ops war room, operations review, leadership offsite or planning session, a \"deep dive with [name]\", or asks to turn workshop/meeting notes or a transcript into a 30/60/90 plan, an accountability plan, a quarterly operations plan, or a war room summary. Also trigger on \"write up the deep dive\", \"summarise the ops workshop\", \"build the 30/60/90\", or any request to produce KPIs and owners from a delivery/ops review. This is a quarterly ritual - reach for this skill even when the user only says \"do the ops review writeup\" without naming the format.",
       "source": "custom",
-      "updatedAt": "2026-08-05T01:53:38.228029Z"
+      "updatedAt": "2026-08-05T01:53:38.228029Z",
+      "backingPluginId": "plugin_01WQn8k5UL7QWFC6pDzyYPZ1"
     },
     {
       "skillId": "skill_01PrsTVTMqxEUf4eTgW21VJq",
       "name": "accelerate-go",
       "description": "Install and operate the GO Mini MCP for Accelerate Tech, the company timesheeting, leave, and project financials system. Use for setup (set up GO, install the GO MCP, connect to GO) and everyday GO tasks - log my time, update or catch up my timesheet, copy last week, book leave, check my leave, export my time and charges, finance report, team timesheets, or tidy up my GO favourites. Runs on Claude Code and Claude Desktop. Not for creating a GO project record or team allocation notifications (those are separate delivery skills).",
       "source": "custom",
-      "updatedAt": "2026-08-11T11:27:54.956407Z"
+      "updatedAt": "2026-08-11T11:27:54.956407Z",
+      "backingPluginId": "plugin_01NrLpni7kJUq6ESm3f4WP4u"
     },
     {
       "skillId": "morning",
@@ -177,7 +186,8 @@
       "name": "accelerate-slides",
       "description": "Generate Accelerate Tech branded PowerPoint slide decks using the official 2026 dark template. Use this skill whenever the user asks to create a deck, slides, presentation, pitch deck, client deck, internal deck, or .pptx for Accelerate Tech. Also trigger on phrases like \"build me slides for [client]\", \"knock up a deck\", \"put together a presentation\", \"Accelerate deck\", \"branded slides\", or any request that references the 2026 dark template, the Figtree-branded deck, or the Accelerate Tech colour palette. Always use this skill for any Accelerate Tech presentation work — including quick informal requests like \"spin up a deck on Power Platform governance\" — to ensure brand, font, and colour consistency.",
       "source": "custom",
-      "updatedAt": "2026-08-05T01:28:24.824217Z"
+      "updatedAt": "2026-08-05T01:28:24.824217Z",
+      "backingPluginId": "plugin_01LmxtztBmAXxpvtF4yWPdq7"
     }
   ]
 }
