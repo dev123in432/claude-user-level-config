@@ -147,6 +147,7 @@
     "skill-creator@claude-plugins-official": false,
     "hookify@claude-plugins-official": false
   },
+  "feedbackDrafts": "off",
   "effortLevel": "xhigh",
   "modelSettings": {
     "claude-opus-4-8": {
