@@ -146,7 +146,6 @@
     "microsoft-docs@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": false,
     "hookify@claude-plugins-official": false,
-    "data@synced": false,
     "cowork-plugin-management@synced": false,
     "accelerate-sales@accelerate-skills": false
   },
