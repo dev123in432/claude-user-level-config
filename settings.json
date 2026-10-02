@@ -116,11 +116,7 @@
       "Bash(mv \"C:/Users/dinne/repos/dev123in432/claude-assistant/.claude/agents/inbox/team/idea.txt\" \"C:/Users/dinne/repos/dev123in432/claude-assistant/.claude/agents/inbox/team/archive/\")",
       "Skill(idea)",
       "Bash(.venv/Scripts/python:*)",
-      "WebFetch(domain:github.com)",
-      "Bash(cp -r /tmp/Dataverse-skills/.github/plugins/dataverse/skills/* \"C:/Users/dinne/repos/dev123in432/claude-assistant/client-configs/esg/.claude/skills/dataverse-skills/\")",
-      "Bash(cp -r /tmp/Dataverse-skills/.github/plugins/dataverse/scripts \"C:/Users/dinne/repos/dev123in432/claude-assistant/client-configs/esg/.claude/skills/dataverse-skills/\")",
-      "Bash(cp -r /tmp/Dataverse-skills/.github/plugins/dataverse/templates \"C:/Users/dinne/repos/dev123in432/claude-assistant/client-configs/esg/.claude/skills/dataverse-skills/\")",
-      "Bash(cp /tmp/Dataverse-skills/docs/safety-and-guardrails.md \"C:/Users/dinne/repos/dev123in432/claude-assistant/client-configs/esg/.claude/skills/dataverse-skills/\")"
+      "WebFetch(domain:github.com)"
     ],
     "deny": [
       "Bash(git push --force *)",
