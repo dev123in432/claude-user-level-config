@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1790894434016,
+  "lastUpdated": 1790979404145,
   "skills": [
     {
       "skillId": "docs",
@@ -176,7 +176,7 @@
       "name": "pptx",
       "description": "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations as PowerPoint (.pptx) files; reading, parsing, or extracting text from any .pptx or .potx file (even if the extracted content will be used elsewhere, like in an email, summary, or creating a different type of slide deck); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates (.potx), layouts, speaker notes, or comments. Trigger whenever the user asks for a PowerPoint or .pptx file, or references a .pptx or .potx filename, regardless of what they plan to do with the content afterward. However, when the user asks for a deck, slides, a slide deck, or a presentation without naming a file format, default to using a dedicated slide-deck artifact type or a separate slides skill if this session offers one; otherwise, use this skill.",
       "source": "anthropic",
-      "updatedAt": "2026-10-01T21:00:31.953956Z"
+      "updatedAt": "2026-10-02T22:00:34.625666Z"
     },
     {
       "skillId": "skill_017iEArLAxM78fThm5yqM8nu",
@@ -221,10 +221,5 @@
       "updatedAt": "2026-09-23T19:50:41.402985Z",
       "creatorType": "anthropic"
     }
-  ],
-  "pendingClaims": [
-    "20028:134350457946891616/pptx",
-    "26104:134353030218226322/pptx",
-    "21560:134352979930905985/pptx"
   ]
 }
